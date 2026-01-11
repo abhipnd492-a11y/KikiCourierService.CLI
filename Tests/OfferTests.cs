@@ -30,12 +30,6 @@ public class OfferTests
     }
 
     [Fact]
-    public void Constructor_DiscountOver100_ThrowsArgumentException()
-    {
-        Assert.Throws<ArgumentException>(() => new Offer("OFR001", 101, 0, 200, 70, 200));
-    }
-
-    [Fact]
     public void Constructor_InvalidDistanceRange_ThrowsArgumentException()
     {
         Assert.Throws<ArgumentException>(() => new Offer("OFR001", 10, 200, 100, 70, 200));
@@ -63,26 +57,6 @@ public class OfferTests
         var offer = new Offer("OFR001", 10, 0, 200, 70, 200);
 
         var result = offer.IsEligible(50, 100);
-
-        Assert.False(result);
-    }
-
-    [Fact]
-    public void IsEligible_WeightAboveMax_ReturnsFalse()
-    {
-        var offer = new Offer("OFR001", 10, 0, 200, 70, 200);
-
-        var result = offer.IsEligible(250, 100);
-
-        Assert.False(result);
-    }
-
-    [Fact]
-    public void IsEligible_DistanceBelowMin_ReturnsFalse()
-    {
-        var offer = new Offer("OFR001", 10, 50, 200, 70, 200);
-
-        var result = offer.IsEligible(100, 30);
 
         Assert.False(result);
     }

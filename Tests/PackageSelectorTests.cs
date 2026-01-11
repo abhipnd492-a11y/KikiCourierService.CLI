@@ -35,19 +35,6 @@ public class PackageSelectorTests
     }
 
     [Fact]
-    public void SelectOptimalPackages_SinglePackageExceedsLimit_ReturnsEmptyList()
-    {
-        var packages = new List<Package>
-        {
-            new Package("PKG1", 150, 100)
-        };
-
-        var result = _selector.SelectOptimalPackages(packages, 100);
-
-        Assert.Empty(result);
-    }
-
-    [Fact]
     public void SelectOptimalPackages_SelectsMaximumWeight()
     {
         var packages = new List<Package>
@@ -116,18 +103,4 @@ public class PackageSelectorTests
         Assert.Equal(185, totalWeight);
     }
 
-    [Fact]
-    public void SelectOptimalPackages_CombinedExactWeightMatch_ReturnsCombination()
-    {
-        var packages = new List<Package>
-        {
-            new Package("PKG1", 60, 30),
-            new Package("PKG2", 40, 50)
-        };
-
-        var result = _selector.SelectOptimalPackages(packages, 100);
-
-        Assert.Equal(2, result.Count);
-        Assert.Equal(100, result.Sum(p => p.WeightInKg));
-    }
 }

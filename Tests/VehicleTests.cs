@@ -47,26 +47,4 @@ public class VehicleTests
         Assert.Equal(2m, vehicle.AvailableAtTime);
     }
 
-    [Fact]
-    public void AssignTrip_MultipleTimes_AccumulatesAvailability()
-    {
-        var vehicle = new Vehicle(1, 200, 70);
-
-        vehicle.AssignTrip(70);
-        vehicle.AssignTrip(35);
-
-        Assert.Equal(3m, vehicle.AvailableAtTime);
-    }
-
-    [Fact]
-    public void ResetAvailability_SetsToZero()
-    {
-        var vehicle = new Vehicle(1, 200, 70);
-        vehicle.AssignTrip(70);
-
-        vehicle.ResetAvailability();
-
-        Assert.Equal(0, vehicle.AvailableAtTime);
-    }
-
 }

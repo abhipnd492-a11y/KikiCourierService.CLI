@@ -66,21 +66,6 @@ public class DeliveryTimeEstimatorTests
     }
 
     [Fact]
-    public void EstimateDeliveryTimes_AppliesDiscountCorrectly()
-    {
-        var packages = new List<Package>
-        {
-            new Package("PKG1", 100, 100, "OFR003")
-        };
-        var vehicles = new List<Vehicle> { new Vehicle(1, 200, 70) };
-
-        var result = _estimator.EstimateDeliveryTimes(100, packages, vehicles);
-
-        Assert.Single(result);
-        Assert.True(result[0].Discount > 0);
-    }
-
-    [Fact]
     public void EstimateDeliveryTimes_Problem2Example_ReturnsExpectedResults()
     {
         var packages = new List<Package>

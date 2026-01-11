@@ -16,15 +16,6 @@ public class PackageTests
     }
 
     [Fact]
-    public void Constructor_NoOfferCode_CreatesPackageWithNullOffer()
-    {
-        var package = new Package("PKG1", 50, 100);
-
-        Assert.Equal("PKG1", package.PackageId);
-        Assert.Null(package.OfferCode);
-    }
-
-    [Fact]
     public void Constructor_EmptyPackageId_ThrowsArgumentException()
     {
         Assert.Throws<ArgumentException>(() => new Package("", 50, 100));

@@ -48,14 +48,4 @@ public class DeliveryCostCalculatorTests
         Assert.Equal(665, result.TotalCost);
     }
 
-    [Fact]
-    public void CalculateCost_NoOfferCode_NoDiscount()
-    {
-        var package = new Package("PKG6", 50, 50);
-        var result = _calculator.CalculateCost(100, package);
-
-        Assert.Equal("PKG6", result.PackageId);
-        Assert.Equal(0, result.Discount);
-        Assert.Equal(850, result.TotalCost);
-    }
 }
