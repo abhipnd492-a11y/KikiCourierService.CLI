@@ -13,27 +13,6 @@ KikiCourierService.CLI/
 └── TestInputs/      # Sample input files
 ```
 
-## Build & Run
-
-```bash
-# Build
-dotnet build
-
-# Run tests
-dotnet test
-
-# Run Problem 1 (Cost Estimation)
-cat TestInputs/problem1_input.txt | dotnet run --project Console
-
-# Run Problem 2 (Time Estimation)
-cat TestInputs/problem2_input.txt | dotnet run --project Console
-```
-
-**Windows PowerShell:**
-```powershell
-Get-Content TestInputs/problem1_input.txt | dotnet run --project Console
-```
-
 ## Input/Output Format
 
 **Problem 1:**
