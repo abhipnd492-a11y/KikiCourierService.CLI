@@ -35,24 +35,37 @@ public class PackageSelector
         return bestCombination;
     }
 
-    private IEnumerable<List<Package>> GetAllCombinations(List<Package> packages)
+    /// <summary>
+    /// Generates all possible non-empty combinations of packages.
+    /// Uses binary counting approach: each number from 1 to 2^n-1 represents a unique combination.
+    /// </summary>
+    private List<List<Package>> GetAllCombinations(List<Package> packages)
     {
-        var count = packages.Count;
+        var allCombinations = new List<List<Package>>();
+        int count = packages.Count;
+        int totalCombinations = (int)Math.Pow(2, count); // 2^count possible combinations
 
-        for (int i = 1; i < (1 << count); i++)
+        // Start from 1 to skip empty combination (0 would include no packages)
+        for (int i = 1; i < totalCombinations; i++)
         {
             var combination = new List<Package>();
 
             for (int j = 0; j < count; j++)
             {
-                if ((i & (1 << j)) != 0)
+                // Check if package at index j should be included in this combination
+                // Using Math.Pow(2, j) creates a bitmask to check if j-th position is set
+                int bitMask = (int)Math.Pow(2, j);
+
+                if ((i & bitMask) != 0)
                 {
                     combination.Add(packages[j]);
                 }
             }
 
-            yield return combination;
+            allCombinations.Add(combination);
         }
+
+        return allCombinations;
     }
 
     private bool IsHeavierCombination(List<Package> combination1, List<Package> combination2)

@@ -1,7 +1,7 @@
 namespace Domain.Entities;
 
 /// <summary>
-/// Represents a package for delivery
+/// Package for delivery
 /// </summary>
 public class Package
 {

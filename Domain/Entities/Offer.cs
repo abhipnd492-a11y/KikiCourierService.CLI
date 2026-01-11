@@ -1,7 +1,7 @@
 namespace Domain.Entities;
 
 /// <summary>
-/// Represents a discount offer with eligibility criteria
+/// Discount offer with eligibility criteria
 /// </summary>
 public class Offer
 {

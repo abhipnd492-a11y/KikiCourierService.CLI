@@ -1,7 +1,7 @@
 namespace Domain.Entities;
 
 /// <summary>
-/// Represents a delivery vehicle with capacity and speed constraints
+/// Delivery vehicle with capacity and speed constraints
 /// </summary>
 public class Vehicle
 {
@@ -38,13 +38,11 @@ public class Vehicle
     public void AssignTrip(decimal maxDistanceInTrip)
     {
         var tripTime = CalculateDeliveryTime(maxDistanceInTrip);
-        // Vehicle takes round trip time (deliver + return)
+        
         AvailableAtTime += tripTime * 2;
     }
 
-    /// <summary>
-    /// Resets vehicle availability (for testing)
-    /// </summary>
+  
     public void ResetAvailability()
     {
         AvailableAtTime = 0;
