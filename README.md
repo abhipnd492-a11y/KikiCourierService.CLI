@@ -125,7 +125,7 @@ Total Cost = Base Cost - Discount
 
 ## Test Coverage
 
-The solution includes **60 unit tests** covering:
+The solution includes **40 unit tests** covering:
 
 - **Domain Entities**: Package, Offer, Vehicle validation and behavior
 - **DeliveryCostCalculator**: Base cost, discount eligibility, multiple packages

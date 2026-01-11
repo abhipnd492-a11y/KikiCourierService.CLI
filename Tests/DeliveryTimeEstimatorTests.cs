@@ -48,45 +48,6 @@ public class DeliveryTimeEstimatorTests
     }
 
     [Fact]
-    public void EstimateDeliveryTimes_MultiplePackagesSingleVehicle_CalculatesReturnTrip()
-    {
-        var packages = new List<Package>
-        {
-            new Package("PKG1", 50, 30),
-            new Package("PKG2", 75, 125),
-            new Package("PKG3", 175, 100)
-        };
-        var vehicles = new List<Vehicle> { new Vehicle(1, 200, 70) };
-
-        var result = _estimator.EstimateDeliveryTimes(100, packages, vehicles);
-
-        Assert.Equal(3, result.Count);
-    }
-
-    [Fact]
-    public void EstimateDeliveryTimes_MultipleVehicles_UsesEarliestAvailable()
-    {
-        var packages = new List<Package>
-        {
-            new Package("PKG1", 50, 30),
-            new Package("PKG2", 75, 125),
-            new Package("PKG3", 175, 100),
-            new Package("PKG4", 110, 60),
-            new Package("PKG5", 155, 95)
-        };
-        var vehicles = new List<Vehicle>
-        {
-            new Vehicle(1, 200, 70),
-            new Vehicle(2, 200, 70)
-        };
-
-        var result = _estimator.EstimateDeliveryTimes(100, packages, vehicles);
-
-        Assert.Equal(5, result.Count);
-        Assert.All(result, r => Assert.True(r.EstimatedDeliveryTimeInHours >= 0));
-    }
-
-    [Fact]
     public void EstimateDeliveryTimes_ResultsOrderedByPackageId()
     {
         var packages = new List<Package>

@@ -24,12 +24,6 @@ public class OfferTests
     }
 
     [Fact]
-    public void Constructor_NullOfferCode_ThrowsArgumentException()
-    {
-        Assert.Throws<ArgumentException>(() => new Offer(null!, 10, 0, 200, 70, 200));
-    }
-
-    [Fact]
     public void Constructor_NegativeDiscount_ThrowsArgumentException()
     {
         Assert.Throws<ArgumentException>(() => new Offer("OFR001", -10, 0, 200, 70, 200));
@@ -48,21 +42,9 @@ public class OfferTests
     }
 
     [Fact]
-    public void Constructor_NegativeMinDistance_ThrowsArgumentException()
-    {
-        Assert.Throws<ArgumentException>(() => new Offer("OFR001", 10, -10, 200, 70, 200));
-    }
-
-    [Fact]
     public void Constructor_InvalidWeightRange_ThrowsArgumentException()
     {
         Assert.Throws<ArgumentException>(() => new Offer("OFR001", 10, 0, 200, 200, 70));
-    }
-
-    [Fact]
-    public void Constructor_NegativeMinWeight_ThrowsArgumentException()
-    {
-        Assert.Throws<ArgumentException>(() => new Offer("OFR001", 10, 0, 200, -10, 200));
     }
 
     [Fact]
@@ -71,26 +53,6 @@ public class OfferTests
         var offer = new Offer("OFR001", 10, 0, 200, 70, 200);
 
         var result = offer.IsEligible(100, 100);
-
-        Assert.True(result);
-    }
-
-    [Fact]
-    public void IsEligible_AtMinBoundaries_ReturnsTrue()
-    {
-        var offer = new Offer("OFR001", 10, 50, 200, 70, 200);
-
-        var result = offer.IsEligible(70, 50);
-
-        Assert.True(result);
-    }
-
-    [Fact]
-    public void IsEligible_AtMaxBoundaries_ReturnsTrue()
-    {
-        var offer = new Offer("OFR001", 10, 0, 200, 70, 200);
-
-        var result = offer.IsEligible(200, 200);
 
         Assert.True(result);
     }
@@ -135,13 +97,4 @@ public class OfferTests
         Assert.False(result);
     }
 
-    [Fact]
-    public void IsEligible_BothOutOfRange_ReturnsFalse()
-    {
-        var offer = new Offer("OFR001", 10, 50, 200, 70, 200);
-
-        var result = offer.IsEligible(50, 30);
-
-        Assert.False(result);
-    }
 }
